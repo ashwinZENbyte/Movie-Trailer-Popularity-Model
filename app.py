@@ -2,10 +2,18 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Movie Trailer Virality", layout="wide")
+st.markdown("""
+<style>
+[data-testid="stSidebar"] {
+    background-color: #E3F2FD;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.set_page_config(page_title="Movie Trailer popularity", layout="wide")
 
 # ---------------- TITLE & ABOUT ----------------
-st.title("🎬 Movie Trailer Virality Prediction")
+st.title("🎬 Movie Trailer Popularity Model")
 st.markdown(
     """
 This project predicts how a movie trailer spreads among viewers using an **SIR-based model**.
@@ -21,8 +29,8 @@ This project predicts how a movie trailer spreads among viewers using an **SIR-b
 # ---------------- SIDEBAR INPUT ----------------
 st.sidebar.header("Input Parameters")
 
-N = st.sidebar.number_input("Total Population", 1000, 1000000, 100000)
-initial_I = st.sidebar.number_input("Initial Active Viewers", 1, 10000, 100)
+N = st.sidebar.number_input("Peak Active", 1000, 1000000, 100000)
+initial_I = st.sidebar.number_input("peak day", 1, 10000, 100)
 beta = st.sidebar.slider("Sharing Rate (beta)", 0.01, 1.0, 0.3)
 gamma = st.sidebar.slider("Drop Rate (gamma)", 0.01, 1.0, 0.1)
 decay = st.sidebar.slider("Decay Rate", 0.0, 0.1, 0.01)
